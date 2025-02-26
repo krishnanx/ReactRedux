@@ -1,7 +1,10 @@
-import { Box, Button, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Image, Text, Card, CardHeader, CardBody, CardFooter, Stack, Divider, ButtonGroup } from '@chakra-ui/react'
+import dress from "../assets/dress.jpg"
 import React from 'react'
 import background from "../assets/freestocks-VFrcRtEQKL8-unsplash.jpg"
 import styled from 'styled-components';
+import eyewear from "../assets/eyewear.jpg"
+import watch from "../assets/watch.jpg"
 const Dashboard = () => {
     return (
         <Box
@@ -19,6 +22,7 @@ const Dashboard = () => {
                 w="100%"
                 h="900px"
                 position="relative"
+                mb="60px"
             >
                 <Image
                     src={background}
@@ -35,6 +39,7 @@ const Dashboard = () => {
                     left={200}
                     h="300px"
                     w="700px"
+
                 >
                     <Heading
                         fontSize="4.5rem"
@@ -61,10 +66,166 @@ const Dashboard = () => {
                         <Button className="button-name" role="button">SHOP NOW</Button>
                     </StyledWrapper>
                 </Box>
+
             </Box>
-        </Box>
+            <Box
+                w="90%"
+                h="900px"
+                // bgColor="black"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+
+            >
+
+                <Box
+                    w="480px" h="500px"
+                    ml="100px"
+
+                >
+                    <Card maxW='sm' p="0" w="480px" h="500px" bgImage={dress}
+                        bgSize="cover"
+                        bgPos="center"
+
+                        _after={{
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            bg: "rgba(0, 0, 0, 0.5)", // Black overlay
+                        }}
+                    >
+                    </Card>
+
+                    <Box
+                        position="relative" top="-200px" left="40px"
+                        w="300px"
+
+                    >
+                        <Text
+                            color="white"
+                            fontSize="1.5rem"
+                            fontWeight="bold"
+                            w="300px"
+                        >
+                            Latest Eyewear For You
+                        </Text>
+                        <Text textAlign="left" whiteSpace="pre-line" fontSize="1rem" color="white">
+                            Explore our premium eyewear collection
+                            where clarity, style, and confidence come together.
+                        </Text>
+
+                        <ButtonGroup spacing='2' w="50%">
+                            <StyledWrapper
+
+                            >
+                                <Button className="button-name" role="button">SHOP NOW</Button>
+                            </StyledWrapper>
+
+                        </ButtonGroup>
+                    </Box>
+                </Box>
+                <Box
+                    w="480px" h="500px"
+
+                >
+                    <Card maxW='sm' p="0" w="480px" h="500px" bgImage={eyewear}
+                        bgSize="cover"
+                        bgPos="center"
+
+                        _after={{
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            bg: "rgba(0, 0, 0, 0.5)", // Black overlay
+                        }}
+                    >
+                    </Card>
+
+                    <Box
+                        position="relative" top="-200px" left="40px"
+                        w="300px"
+                    >
+                        <Text
+                            color="white"
+                            fontSize="1.5rem"
+                            fontWeight="bold"
+                            w="300px"
+                        >
+                            Latest Eyewear For You
+                        </Text>
+                        <Text textAlign="left" whiteSpace="pre-line" fontSize="1rem" color="white">
+                            Explore our premium eyewear collection
+                            where clarity, style, and confidence come together.
+                        </Text>
+
+                        <ButtonGroup spacing='2' w="50%">
+                            <StyledWrapper
+
+                            >
+                                <Button className="button-name" role="button">SHOP NOW</Button>
+                            </StyledWrapper>
+
+                        </ButtonGroup>
+                    </Box>
+                </Box>
+                <Box
+                    w="480px" h="500px"
+                >
+                    <Card maxW='sm' p="0" w="480px" h="500px" bgImage={watch}
+                        bgSize="cover"
+                        bgPos="center"
+
+                        _after={{
+                            content: '""',
+                            position: "absolute",
+                            top: 0,
+                            left: 0,
+                            width: "100%",
+                            height: "100%",
+                            bg: "rgba(0, 0, 0, 0.5)", // Black overlay
+                        }}
+                    >
+                    </Card>
+
+                    <Box
+                        position="relative" top="-200px" left="40px"
+                        w="300px"
+                    >
+                        <Text
+                            color="white"
+                            fontSize="1.5rem"
+                            fontWeight="bold"
+                            w="300px"
+                        >
+                            Latest Eyewear For You
+                        </Text>
+                        <Text textAlign="left" whiteSpace="pre-line" fontSize="1rem" color="white">
+                            Explore our premium eyewear collection
+                            where clarity, style, and confidence come together.
+                        </Text>
+
+                        <ButtonGroup spacing='2' w="50%">
+                            <StyledWrapper
+
+                            >
+                                <Button className="button-name" role="button">SHOP NOW</Button>
+                            </StyledWrapper>
+
+                        </ButtonGroup>
+                    </Box>
+                </Box>
+
+            </Box >
+        </Box >
     )
 }
+
 const StyledWrapper = styled.div`
   .button-name {
     align-items: center;

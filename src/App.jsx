@@ -6,11 +6,12 @@ import Dashboard from './Components/Dashboard'
 import Cart from './Components/Cart'
 import Navbar from './Components/Navbar'
 import { Box } from '@chakra-ui/react'
+import Layout from './Components/Layout'
 
 function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
-    <Route path="/" element={<Navbar />}>
+    <Route path="/" element={<Layout />}>
       <Route index element={<Dashboard />}></Route>
       <Route path="/cart" element={<Cart />}></Route>
     </Route>
@@ -20,7 +21,7 @@ function App() {
       <Box
         w="99.2vw"
         display='flex'
-        bgColor="#84B2D7"
+
         p="0"
       >
         <RouterProvider router={router} />
