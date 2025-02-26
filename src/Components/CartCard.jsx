@@ -1,5 +1,5 @@
 import { Box, Card, CardBody, Stack, Heading, Divider, Image, CardFooter, ButtonGroup, Button, Text } from '@chakra-ui/react'
-export const CartCards = ({ products }) => {
+export const CartCards = ({ products, HandleDelete }) => {
     console.log(products)
     return (
         products.map((data, index) => (
@@ -37,14 +37,34 @@ export const CartCards = ({ products }) => {
                     </CardBody>
                     <Divider />
                     <CardFooter>
-                        <ButtonGroup spacing='2'>
+                        <ButtonGroup spacing='2' display="flex" alignItems="center" justifyContent="space-between" w="100%">
                             <Button variant='solid' colorScheme='blue'>
                                 Buy now
+                            </Button>
+                            <Button
+                                onClick={() => HandleDelete(data.id)}
+                            >
+                                <Box
+                                    as="span"
+                                    className="material-symbols-outlined"
+                                    sx={{
+                                        fontVariationSettings: "'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 48",
+                                        fontSize: "30px",
+                                        color: "black",
+                                        cursor: "pointer",
+                                        transition: "color 0.3s ease",
+                                        '&:hover': {
+                                            color: "white",
+                                        },
+                                    }}
+                                >
+                                    delete
+                                </Box>
                             </Button>
                         </ButtonGroup>
                     </CardFooter>
                 </Card>
-            </Box>
+            </Box >
         ))
     )
 }
