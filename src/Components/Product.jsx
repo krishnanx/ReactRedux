@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Heading, Box, Image, Card, CardHeader, CardBody, CardFooter, Text, Stack, Divider, ButtonGroup, Button } from '@chakra-ui/react'
-
+import { useDispatch } from 'react-redux'
+import { add } from '../Store/CartSlice'
 const Product = () => {
     const [products, setProducts] = useState([])
+    const dispatch = useDispatch();
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(data => data.json())
             .then(result => setProducts(result))
     }, [])
+    const handleCart = (product) => {
+        dispatch(add(product))
+    }
     const Cards = ({ products }) => {
         console.log(products)
         return (
@@ -50,7 +55,7 @@ const Product = () => {
                                 <Button variant='solid' colorScheme='blue'>
                                     Buy now
                                 </Button>
-                                <Button variant='ghost' colorScheme='blue'>
+                                <Button variant='ghost' colorScheme='blue' onClick={(() => handleCart(data))}>
                                     Add to cart
                                 </Button>
                             </ButtonGroup>
