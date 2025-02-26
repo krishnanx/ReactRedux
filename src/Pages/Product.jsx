@@ -14,7 +14,19 @@ const Product = () => {
         dispatch(getproduct())
 
     }, [])
-
+    if (status === 'loading') {
+        return (
+            <Box
+                display="flex"
+                w="99vw"
+                h="1000px"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Loader />
+            </Box>
+        )
+    }
     const HandleCart = (product) => {
         dispatch(add(product))
     }
