@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Heading, Box, Image, Card, CardHeader, CardBody, CardFooter, Text, Stack, Divider, ButtonGroup, Button } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { add } from '../Store/CartSlice'
+import { Cards } from '../Components/Card'
 const Product = () => {
     const [products, setProducts] = useState([])
     const dispatch = useDispatch();
@@ -10,61 +11,12 @@ const Product = () => {
             .then(data => data.json())
             .then(result => setProducts(result))
     }, [])
-    const handleCart = (product) => {
+    const HandleCart = (product) => {
         dispatch(add(product))
     }
-    const Cards = ({ products }) => {
-        console.log(products)
-        return (
-            products.map((data, index) => (
-                <Box
-                    m='30px'
-                    key={index}
-                >
-                    <Card maxW='sm' h="100%" >
-                        <CardBody display='flex' flex='1' flexDirection='column'>
-                            <Box
-                                w='100%'
-                                h='300px'
-                                display='flex'
-                                justifyContent='center'
-                                alignItems='center'
 
-                            >
-                                <Image
-                                    src={data.image}
-                                    alt='Green double couch with wooden legs'
-                                    borderRadius='lg'
-                                    w='200px'
-                                    h="200px"
-                                />
-                            </Box>
-                            <Stack mt='6' spacing='3'>
-                                <Heading size='md'>{data.title}</Heading>
-                                <Text>
-                                    {data.description}
-                                </Text>
-                                <Text color='blue.600' fontSize='2xl'>
-                                    ${data.price}
-                                </Text>
-                            </Stack>
-                        </CardBody>
-                        <Divider />
-                        <CardFooter>
-                            <ButtonGroup spacing='2'>
-                                <Button variant='solid' colorScheme='blue'>
-                                    Buy now
-                                </Button>
-                                <Button variant='ghost' colorScheme='blue' onClick={(() => handleCart(data))}>
-                                    Add to cart
-                                </Button>
-                            </ButtonGroup>
-                        </CardFooter>
-                    </Card>
-                </Box>
-            ))
-        )
-    }
+
+
     return (
         <Box
             display='flex'
@@ -83,12 +35,12 @@ const Product = () => {
                 justifyContent='center'
 
             >
-                <Cards products={products} />
+                <Cards products={products} handleCart={HandleCart} />
             </Box>
 
         </Box>
 
     )
-}
 
+}
 export default Product
