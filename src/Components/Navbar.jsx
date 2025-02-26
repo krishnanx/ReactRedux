@@ -1,11 +1,14 @@
-import { Box, Text, Link, Button, Image, Heading, textDecoration } from '@chakra-ui/react'
+import { Box, Text, Link, Button, Image, Heading, textDecoration, Circle } from "@chakra-ui/react"
+
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import cart from "../assets/icons/shopping.svg"
 import account from "../assets/icons/account.svg"
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux"
 const Navbar = () => {
     const navigate = useNavigate();
+    const cartProducts = useSelector(state => state.cart)
     return (
         <>
             <Box
@@ -104,6 +107,11 @@ const Navbar = () => {
                         >
                             Shopping_Cart
                         </Box>
+
+                        <Circle size="5" bg="red" color="white" position="relative" top="-13px" left="-10px">
+                            {cartProducts.length}
+                        </Circle>
+
 
                     </Button>
                     <Button
