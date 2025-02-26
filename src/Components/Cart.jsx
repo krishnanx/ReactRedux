@@ -3,8 +3,13 @@ import React from 'react'
 
 const Cart = () => {
     return (
-        <Box>
-            <Heading>
+        <Box
+            display='flex'
+            justifyContent='center'
+        >
+            <Heading
+                fontSize="2.5rem"
+            >
                 Cart
             </Heading>
         </Box>
