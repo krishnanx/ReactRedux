@@ -69,11 +69,6 @@ const Product = () => {
             pt='20px'
 
         >
-            <Heading
-                fontSize='3rem'
-            >
-                Product Dashboard
-            </Heading>
 
             <Box
                 w='100%'

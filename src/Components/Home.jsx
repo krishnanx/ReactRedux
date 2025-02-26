@@ -12,7 +12,7 @@ const Dashboard = () => {
             flexDirection="column"
             alignItems="center"
             width="99.2vw" // Use 100% instead of 100vw
-            h="4000px"// Adjust based on navbar height
+            h="3000px"// Adjust based on navbar height
 
             p="0"
             position="absolute"
@@ -70,12 +70,12 @@ const Dashboard = () => {
             </Box>
             <Box
                 w="90%"
-                h="900px"
+                h="1000px"
                 // bgColor="black"
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-
+                mb="400px"
             >
 
                 <Box
@@ -222,6 +222,78 @@ const Dashboard = () => {
                 </Box>
 
             </Box >
+            <Box
+                w="100%"
+                h="500px"
+                borderTopWidth="0.5px"
+                borderTopColor="gray"
+                borderBottomWidth="0.5px"
+                borderBottomColor="gray"
+                display="flex"
+
+            >
+                <Box
+                    w="50%"
+                    display="Flex"
+                    alignItems="center"
+                    justifyContent="center"
+
+                >
+                    <Box
+                        w="500px"
+                        h="200px"
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="center"
+                        alignItems="center"
+                    >
+                        <Heading
+                            textAlign="start"
+                            w="500px"
+                            fontSize="4rem"
+                        >
+                            Vistora
+                        </Heading>
+                        <Text
+                            fontSize="2rem"
+                            textAlign="start"
+                            w="500px"
+                        >
+                            Because You Deserve the Best.
+                        </Text>
+                    </Box>
+                </Box>
+                <Box
+                    w="50%"
+                    display="flex"
+
+                >
+
+                </Box>
+
+            </Box>
+            <Box
+                w="100%"
+                h="130px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                justifyContent="space-around"
+            >
+                <Text
+                    textAlign="center"
+                    h="50px"
+                    p="20px"
+                >
+                    Copyright © 2025 Vistora.
+                </Text>
+                <Box
+                    w="50%"
+                    h="100px"
+                >
+                    <></>
+                </Box>
+            </Box>
         </Box >
     )
 }

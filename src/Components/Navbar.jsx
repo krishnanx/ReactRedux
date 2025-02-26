@@ -1,4 +1,4 @@
-import { Box, Text, Link, Button, Image } from '@chakra-ui/react'
+import { Box, Text, Link, Button, Image, Heading, textDecoration } from '@chakra-ui/react'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import cart from "../assets/icons/shopping.svg"
@@ -23,12 +23,53 @@ const Navbar = () => {
                 pl={5}
                 pr={5}
             >
-                <Box justify="space-between" align="center">
+                <Box justifyContent="space-between" alignItems="center" display="flex"
+                    flexDirection="row"
+                    w="40%"
 
+                >
+                    <Heading>
+                        Vistora
+                    </Heading>
+                    <Box
+                        justifyContent="space-between" alignItems="center" display="flex"
+                        w="500px"
+                    >
+                        <Link
+                            to="/Products"
+                            onClick={() => navigate("/Products")}
+                            fontSize="1.2rem"
+                            _hover={{ textDecoration: 'none', color: "white" }}
+                        >
+                            EVERYTHING
+                        </Link>
+                        <Link
+                            to="/Products"
+                            onClick={() => navigate("/Products")}
+                            fontSize="1.2rem"
+                            _hover={{ textDecoration: 'none', color: "white" }}
+                        >
+                            MEN
+                        </Link>
+                        <Link
+                            to="/Products"
+                            onClick={() => navigate("/Products")}
+                            fontSize="1.2rem"
+                            _hover={{ textDecoration: 'none', color: "white" }}
+                        >
+                            WOMEN
+                        </Link>
+                        <Link
+                            to="/Products"
+                            onClick={() => navigate("/Products")}
+                            fontSize="1.2rem"
+                            _hover={{ textDecoration: 'none', color: "white" }}
+                        >
+                            ACCESSORIES
+                        </Link>
+                    </Box>
                 </Box>
-                <Box>
 
-                </Box>
                 <Box
                     display="flex"
                     flexDirection="row"
@@ -51,13 +92,13 @@ const Navbar = () => {
                             as="span"
                             className="material-symbols-outlined"
                             sx={{
-                                fontVariationSettings: "'FILL' 0, 'wght' 100, 'GRAD' -25, 'opsz' 48",
+                                fontVariationSettings: "'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 48",
                                 fontSize: "30px",
-                                color: "white",
+                                color: "black",
                                 cursor: "pointer",
                                 transition: "color 0.3s ease",
                                 '&:hover': {
-                                    color: "black",
+                                    color: "white",
                                 },
                             }}
                         >
@@ -77,13 +118,13 @@ const Navbar = () => {
                             as="span"
                             className="material-symbols-outlined"
                             sx={{
-                                fontVariationSettings: "'FILL' 0, 'wght' 100, 'GRAD' -25, 'opsz' 48",
+                                fontVariationSettings: "'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 48",
                                 fontSize: "30px",
-                                color: "white",
+                                color: "black",
                                 cursor: "pointer",
                                 transition: "color 0.3s ease",
                                 '&:hover': {
-                                    color: "black",
+                                    color: "white",
                                 },
                             }}
                         >
