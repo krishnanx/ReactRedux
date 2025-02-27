@@ -5,6 +5,7 @@ import { add } from '../Store/CartSlice'
 import { Cards } from '../Components/Card'
 import { getproduct } from '../Store/ProductSlice'
 import Loader from '../Components/Loader'
+import statusCode from '../Utils/StatusCode'
 const Product = () => {
 
     const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const Product = () => {
         dispatch(getproduct())
 
     }, [])
-    if (status === 'loading') {
+    if (status === statusCode.LOADING) {
         return (
             <Box
                 display="flex"
