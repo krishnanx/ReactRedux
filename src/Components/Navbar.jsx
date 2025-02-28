@@ -24,6 +24,7 @@ const Navbar = () => {
     const navigate = useNavigate();
     const { onOpen, onClose, isOpen } = useDisclosure()
     const cartProducts = useSelector(state => state.cart)
+    const { data, status } = useSelector(state => state.auth)
     const location = useLocation();
 
     const hideNavbarRoutes = ["/signin", "/SignUp"];
@@ -33,6 +34,14 @@ const Navbar = () => {
     }, [location])
     const handleACC = () => {
         onOpen()
+    }
+    const handleCart = () => {
+        if (data.success) {
+            navigate("/Cart")
+        }
+        else {
+            onOpen()
+        }
     }
     return (
         <>
@@ -116,7 +125,7 @@ const Navbar = () => {
                         bgColor="transparent"
                         h="50px"
                         w="30px"
-                        onClick={() => navigate("/cart")}
+                        onClick={() => handleCart()}
                         p={0}
                         _hover={{ bgColor: "transparent" }}
                     >
