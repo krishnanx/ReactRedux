@@ -1,26 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Box, Button } from '@chakra-ui/react';
-const Form = () => {
+import { supabase } from '../Supabase/SupaClient';
+import { SignUpNewUser } from '../Functions/SupaAuth';
+const Form = ({ handleSignUp }) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [value, setValue] = useState({});
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setValue({
+            name: name,
+            email: email,
+            password: password
+        });
+        setName("");
+        setEmail("");
+        setPassword("");
+        handleSignUp(value.email, value.password)
+    }
+    useEffect(() => {
+        console.log(value)
+    })
     return (
         <TextBox>
             <Box className="container">
                 <Box className="heading"></Box>
                 <form className="form" action>
                     <Box className="input-field">
-                        <input required autoComplete="off" type="text" name="text" id="username" />
+                        <input required autoComplete="off"
+                            type="text"
+                            name="text"
+                            id="username"
+                            onChange={(e) => { setName(e.target.value) }}
+                            value={name}
+                        />
                         <label htmlFor="username">Full Name</label>
                     </Box>
                     <Box className="input-field">
-                        <input required autoComplete="off" type="email" name="email" id="email" />
+                        <input required autoComplete="off" type="email" name="email" id="email"
+                            onChange={(e) => { setEmail(e.target.value) }} value={email} />
                         <label htmlFor="email">Email</label>
                     </Box>
                     <Box className="input-field">
-                        <input required autoComplete="off" type="password" name="text" id="password" />
+                        <input required autoComplete="off" type="password" name="text" id="password"
+                            onChange={(e) => { setPassword(e.target.value) }} value={password} />
                         <label htmlFor="username">Password</label>
                     </Box>
                     <Box className="btn-container">
-                        <Button colorScheme='teal' variant='outline'>
+                        <Button colorScheme='teal' variant='outline'
+                            onClick={(e) => handleSubmit(e)}
+                        >
                             Submit
                         </Button>
                     </Box>
@@ -112,7 +143,6 @@ const TextBox = styled.div`
     outline: none;
     border: solid 1px #66B2B2;
   }
-
   .input-field input:focus ~ label,
   .input-field input:valid ~ label {
     transform: translateY(-51%) translateX(-10px) scale(0.8);
@@ -123,8 +153,7 @@ const TextBox = styled.div`
     letter-spacing: 1px;
     border: none;
     border-radius: 100px;
-  }
-
+}
   .form .passicon {
     cursor: pointer;
     font-size: 1.3rem;

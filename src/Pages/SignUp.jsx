@@ -1,7 +1,19 @@
 import { Box, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import AuthForm from "../Components/AuthForm"
+import { SignUpNewUser } from '../Functions/SupaAuth'
+import { useDispatch, useSelector } from 'react-redux'
+import { signUpUser } from '../Store/AuthSlice'
+import statusCode from '../Utils/StatusCode'
+import Loader from '../Components/Loader'
 const SignUp = () => {
+
+    const dispatch = useDispatch()
+    const { data: products, status } = useSelector((state) => state.auth);
+    const handleSignUp = async (email, password) => {
+        dispatch(signUpUser({ email, password }));
+    }
+
     return (
         <Box
             w="99.5vw"
@@ -32,7 +44,7 @@ const SignUp = () => {
                     w="100%"
                     h="500px"
                 >
-                    <AuthForm />
+                    <AuthForm handleSignUp={handleSignUp} />
                 </Box>
             </Box>
         </Box>
