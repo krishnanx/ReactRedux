@@ -25,6 +25,8 @@ const Navbar = () => {
     const { onOpen, onClose, isOpen } = useDisclosure()
     const cartProducts = useSelector(state => state.cart)
     const location = useLocation();
+
+    const hideNavbarRoutes = ["/signin", "/SignUp"];
     useEffect(() => {
 
         console.log(location)
@@ -57,7 +59,7 @@ const Navbar = () => {
                     <Heading>
                         Vistora
                     </Heading>
-                    <Box
+                    {!hideNavbarRoutes.includes(location.pathname) && <Box
                         justifyContent="space-between" alignItems="center" display="flex"
                         w="500px"
                     >
@@ -97,10 +99,10 @@ const Navbar = () => {
                         >
                             ACCESSORIES
                         </Link>
-                    </Box>
+                    </Box>}
                 </Box>
 
-                <Box
+                {!hideNavbarRoutes.includes(location.pathname) && <Box
                     display="flex"
                     flexDirection="row"
                     justifyContent="space-between"
@@ -238,7 +240,7 @@ const Navbar = () => {
 
 
 
-                </Box>
+                </Box>}
             </Box >
 
         </>
