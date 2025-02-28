@@ -8,6 +8,7 @@ import Navbar from './Components/Navbar'
 import { Box } from '@chakra-ui/react'
 import Layout from './Components/Layout'
 import SignUp from './Pages/SignUp'
+import Account from './Pages/Account'
 function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
@@ -16,6 +17,7 @@ function App() {
       <Route path="/cart" element={<Cart />}></Route>
       <Route path="/Products" element={<Product />}></Route>
       <Route path="/SignUp" element={<SignUp />}></Route>
+      <Route path="/Account" element={<Account />}></Route>
     </Route>
   ))
   return (

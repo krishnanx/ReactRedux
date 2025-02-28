@@ -33,7 +33,12 @@ const Navbar = () => {
         console.log(location)
     }, [location])
     const handleACC = () => {
-        onOpen()
+        if (data.success) {
+            navigate("/Account")
+        }
+        else {
+            onOpen()
+        }
     }
     const handleCart = () => {
         if (data.success) {
