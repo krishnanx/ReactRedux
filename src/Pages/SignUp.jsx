@@ -31,7 +31,43 @@ const SignUp = () => {
             </Box>
         )
     }
+    else if (status === statusCode.IDLE) {
+        console.log(data);
+        navigate("/");
+    }
+    else if (status === statusCode.ERROR) {
+        console.log(data.error.message);
+        const toastId = "error-toast"; // Unique ID
+        if (!toast.isActive(toastId)) { // Prevent duplicate toast
+            toast({
+                id: toastId,
+                title: data.error.message,
+                status: status,
+                isClosable: true,
+                position: 'top-right'
+            });
+        }
 
+        // return (
+        //     <Wrap>
+
+        //         <WrapItem key={i}>
+        //             <Button
+        //                 onClick={() =>
+        //                     toast({
+        //                         title: `${status} toast`,
+        //                         status: status,
+        //                         isClosable: true,
+        //                     })
+        //                 }
+        //             >
+        //                 Show {status} toast
+        //             </Button>
+        //         </WrapItem>
+
+        //     </Wrap>
+        // )
+    }
     return (
         <Box
             w="99.5vw"
