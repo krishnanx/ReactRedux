@@ -4,18 +4,21 @@ import { Box, Button } from '@chakra-ui/react';
 import { supabase } from '../Supabase/SupaClient';
 import { SignUpNewUser } from '../Functions/SupaAuth';
 const Form = ({ handleSignUp }) => {
-    const [name, setName] = useState("");
+    const [Fname, setFName] = useState("");
+    const [Lname, setLName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [value, setValue] = useState({});
     const handleSubmit = async (e) => {
         e.preventDefault()
         setValue({
-            name: name,
+            Fname: Fname,
+            Lname: Lname,
             email: email,
             password: password
         });
-        setName("");
+        setFName("");
+        setLName("");
         setEmail("");
         setPassword("");
         handleSignUp(value.email, value.password)
@@ -33,10 +36,20 @@ const Form = ({ handleSignUp }) => {
                             type="text"
                             name="text"
                             id="username"
-                            onChange={(e) => { setName(e.target.value) }}
-                            value={name}
+                            onChange={(e) => { setFName(e.target.value) }}
+                            value={Fname}
                         />
-                        <label htmlFor="username">Full Name</label>
+                        <label htmlFor="username">First Name</label>
+                    </Box>
+                    <Box className="input-field">
+                        <input required autoComplete="off"
+                            type="text"
+                            name="text"
+                            id="username"
+                            onChange={(e) => { setLName(e.target.value) }}
+                            value={Lname}
+                        />
+                        <label htmlFor="username">Last Name</label>
                     </Box>
                     <Box className="input-field">
                         <input required autoComplete="off" type="email" name="email" id="email"
