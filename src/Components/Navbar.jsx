@@ -1,14 +1,37 @@
-import { Box, Text, Link, Button, Image, Heading, textDecoration, Circle } from "@chakra-ui/react"
+import {
+    Box, Text, Link, Button, Image, Heading, textDecoration, Circle,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    useDisclosure,
 
-import React from 'react'
+} from "@chakra-ui/react"
+
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import cart from "../assets/icons/shopping.svg"
 import account from "../assets/icons/account.svg"
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux"
+import { useLocation } from "react-router-dom";
+import styled from "styled-components"
+import SignUp from "../Pages/SignUp"
 const Navbar = () => {
     const navigate = useNavigate();
+    const { onOpen, onClose, isOpen } = useDisclosure()
     const cartProducts = useSelector(state => state.cart)
+    const location = useLocation();
+    useEffect(() => {
+
+        console.log(location)
+    }, [location])
+    const handleACC = () => {
+        onOpen()
+    }
     return (
         <>
             <Box
@@ -42,31 +65,35 @@ const Navbar = () => {
                             to="/Products"
                             onClick={() => navigate("/Products")}
                             fontSize="1.2rem"
-                            _hover={{ textDecoration: 'none', color: "white" }}
+                            color={location.pathname === "/Products" ? "blue" : "black"}
+                            _hover={{ textDecoration: 'none', color: location.pathname === "/Products" ? "blue" : "white" }}
                         >
                             EVERYTHING
                         </Link>
                         <Link
                             to="/Products"
-                            onClick={() => navigate("/Products")}
+                            // onClick={() => navigate("/Men")}
                             fontSize="1.2rem"
-                            _hover={{ textDecoration: 'none', color: "white" }}
+                            color={location.pathname === "/Men" ? "blue" : "black"}
+                            _hover={{ textDecoration: 'none', color: location.pathname === "/Men" ? "blue" : "white" }}
                         >
                             MEN
                         </Link>
                         <Link
                             to="/Products"
-                            onClick={() => navigate("/Products")}
+                            // onClick={() => navigate("/Women")}
                             fontSize="1.2rem"
-                            _hover={{ textDecoration: 'none', color: "white" }}
+                            color={location.pathname === "/Women" ? "blue" : "black"}
+                            _hover={{ textDecoration: 'none', color: location.pathname === "/Women" ? "blue" : "white" }}
                         >
                             WOMEN
                         </Link>
                         <Link
                             to="/Products"
-                            onClick={() => navigate("/Products")}
+                            // onClick={() => navigate("/Accessories")}
                             fontSize="1.2rem"
-                            _hover={{ textDecoration: 'none', color: "white" }}
+                            color={location.pathname === "/Accessories" ? "blue" : "black"}
+                            _hover={{ textDecoration: 'none', color: location.pathname === "/Accessories" ? "blue" : "white" }}
                         >
                             ACCESSORIES
                         </Link>
@@ -114,11 +141,79 @@ const Navbar = () => {
 
 
                     </Button>
+                    <Modal isOpen={isOpen} onClose={onClose}
+                        isCentered
+                        size="lg"
+
+
+                    >
+                        <ModalOverlay />
+                        <ModalContent
+                            h="400px"
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                        // bgColor="#c8c7b3"
+                        >
+                            <ModalHeader
+                                display="flex"
+                                justifyContent="center"
+                                fontSize="2rem"
+                            >WELCOME BACK!</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody
+                                display="flex"
+                                flexDirection="column"
+                                alignItems="center"
+                                justifyContent="space-around"
+
+                            >
+                                <Box>
+                                    <Text
+                                        fontSize="1.5rem"
+                                        textAlign="center"
+                                    >
+                                        Sign in or create an account for faster checkout, exclusive deals, and order tracking
+                                    </Text>
+                                </Box>
+                                <Box
+                                    display="flex"
+                                    flexDirection="column"
+                                    alignItems="center"
+                                >
+                                    <Button colorScheme='teal' variant='outline' mb="2"
+                                        borderRadius="20px"
+                                        w="350px"
+                                        onClick={() => {
+                                            onClose()
+                                            navigate("/SignUp")
+                                        }}
+                                    >
+                                        Log in
+                                    </Button>
+                                    <Button colorScheme='teal' variant='outline'
+                                        borderRadius="20px"
+                                        w="350px"
+                                    >
+                                        Sign up
+                                    </Button>
+                                </Box>
+                            </ModalBody>
+
+                            <ModalFooter>
+                                {/* <Button colorScheme='blue' mr={3} onClick={onClose}>
+                                    Close
+                                </Button>
+                                <Button variant='ghost'>Secondary Action</Button> */}
+                            </ModalFooter>
+                        </ModalContent>
+                    </Modal>
+
                     <Button
                         bgColor="transparent"
                         h="50px"
                         w="30px"
-                        onClick={() => console.log("hi")}
+                        onClick={() => handleACC()}
                         p={0}
                         _hover={{ bgColor: "transparent" }}
                     >
@@ -140,6 +235,9 @@ const Navbar = () => {
                         </Box>
 
                     </Button>
+
+
+
                 </Box>
             </Box >
 
@@ -147,5 +245,92 @@ const Navbar = () => {
 
     )
 }
+const signinButton = styled.div`
+  .animated-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 36px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    background-color: ;
+    border-radius: 100px;
+    font-weight: 600;
+    color: #1f387e;
+    box-shadow: 0 0 0 2px #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
+  .animated-button svg {
+    position: absolute;
+    width: 24px;
+    fill: #1f387e;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animated-button .arr-1 {
+    right: 16px;
+  }
+
+  .animated-button .arr-2 {
+    left: -25%;
+  }
+
+  .animated-button .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #c5e5e4;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: #212121;
+    border-radius: 12px;
+  }
+
+  .animated-button:hover .arr-1 {
+    right: -25%;
+  }
+
+  .animated-button:hover .arr-2 {
+    left: 16px;
+  }
+
+  .animated-button:hover .text {
+    transform: translateX(12px);
+  }
+
+  .animated-button:hover svg {
+    fill: #1f387e;
+  }
+
+  .animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px greenyellow;
+  }
+
+  .animated-button:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+  }`;
 export default Navbar
