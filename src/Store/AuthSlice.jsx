@@ -5,7 +5,7 @@ const AuthSlice = createSlice({
     name: 'Auth',
     initialState: {
         data: [],
-        status: "idle"
+        status: "none"
     },
     reducers: {
         addUser(state, action) {
@@ -18,7 +18,12 @@ const AuthSlice = createSlice({
         })
         builder.addCase(signUpUser.fulfilled, (state, action) => {
             state.data = action.payload;
-            state.status = "idle";
+            if (action.payload.success) {
+                state.status = "idle";
+            }
+            else {
+                state.status = "error";
+            }
         })
         builder.addCase(signUpUser.rejected, (state, action) => {
             state.data = action.payload;
@@ -30,6 +35,7 @@ const AuthSlice = createSlice({
 export const { addUser } = AuthSlice.actions;
 export default AuthSlice.reducer;
 export const signUpUser = createAsyncThunk("auth/signUp", async ({ email, password }) => {
+    console.log(email, password)
     try {
         const response = await SignUpNewUser(email, password);
         return response; // Return response data to update Redux state

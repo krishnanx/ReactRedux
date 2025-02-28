@@ -17,17 +17,17 @@ const SupaAuth = () => {
 
 export default SupaAuth
 export const SignUpNewUser = async (email, password) => {
+    // console.log(email, password)
     const { data, error } = await supabase.auth.signUp({
-        email: email,
-        password: password
-
+        email,
+        password
     })
     if (error) {
         console.log(error);
-        return { sucess: false, data }
+        return { success: false, error }
     }
     else {
         console.log(data);
-        return { sucess: true, data }
+        return { success: true, data }
     }
 }

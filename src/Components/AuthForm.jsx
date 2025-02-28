@@ -17,11 +17,11 @@ const Form = ({ handleSignUp }) => {
             email: email,
             password: password
         });
+        handleSignUp(email, password);
         setFName("");
         setLName("");
         setEmail("");
         setPassword("");
-        handleSignUp(value.email, value.password)
     }
     useEffect(() => {
         console.log(value)
@@ -35,7 +35,7 @@ const Form = ({ handleSignUp }) => {
                         <input required autoComplete="off"
                             type="text"
                             name="text"
-                            id="username"
+                            id="Fname"
                             onChange={(e) => { setFName(e.target.value) }}
                             value={Fname}
                         />
@@ -45,7 +45,7 @@ const Form = ({ handleSignUp }) => {
                         <input required autoComplete="off"
                             type="text"
                             name="text"
-                            id="username"
+                            id="Lname"
                             onChange={(e) => { setLName(e.target.value) }}
                             value={Lname}
                         />

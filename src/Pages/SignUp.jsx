@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Text, useToast, Wrap, WrapItem, Button } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import AuthForm from "../Components/AuthForm"
 import { SignUpNewUser } from '../Functions/SupaAuth'
@@ -6,12 +6,30 @@ import { useDispatch, useSelector } from 'react-redux'
 import { signUpUser } from '../Store/AuthSlice'
 import statusCode from '../Utils/StatusCode'
 import Loader from '../Components/Loader'
+import { useNavigate } from 'react-router-dom'
+
 const SignUp = () => {
 
     const dispatch = useDispatch()
-    const { data: products, status } = useSelector((state) => state.auth);
+    const toast = useToast()
+    const navigate = useNavigate()
+    const { data: data, status } = useSelector((state) => state.auth);
     const handleSignUp = async (email, password) => {
+        console.log(email, password);
         dispatch(signUpUser({ email, password }));
+    }
+    if (status === statusCode.LOADING) {
+        return (
+            <Box
+                display="flex"
+                w="99vw"
+                h="1000px"
+                justifyContent="center"
+                alignItems="center"
+            >
+                <Loader />
+            </Box>
+        )
     }
 
     return (
